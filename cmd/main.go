@@ -25,12 +25,7 @@ func main() {
 	}
 	defer db.Close()
 	var banner []BannerBook
-	db.Table("read_ws_banner").Select("book_name,action_type,url,introduction,book_id").Where("app_id = 'com.fantasy.best.novel'").Order("sort").Scan(&banner)
-	fmt.Println(db)
+	db.Table("read_banners").Select("book_name,action_type,url,introduction,book_id").Where("app_id = 'com.fantasy.best.novel'").Order("sort").Scan(&banner)
 	fmt.Println(banner)
-	var names []string
-	db.Table("read_ws_banner").Pluck("book_name", &names)
-
-	fmt.Println(names)
 
 }
